@@ -1,6 +1,7 @@
 package pers.main.bgm.frame;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -9,7 +10,19 @@ import javafx.stage.Stage;
  * Created by 10673 on 2017/11/26.
  */
 public class MenuFramePart {
-    public MenuBar initialMenuBar(Stage root){
+
+    public void listenNewMenuItem(MenuItem newMenuItem,final Stage stage,final TabPane mainTabPane){
+        newMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Tab currentTab = new TabPaneFramePart().initialSingleTab(stage,mainTabPane);
+                mainTabPane.getTabs().addAll(currentTab);
+                mainTabPane.getSelectionModel().select(currentTab);
+            }
+        });
+    }
+
+    public MenuBar initialMenuBar(final Stage root,final TabPane mainTabPane){
         MenuBar menuBar = new MenuBar();
 
         Menu fileMenu = new Menu("文件");
@@ -33,6 +46,9 @@ public class MenuFramePart {
         MenuItem gb2312MenuItem = new MenuItem("转换成GB2312编码");
         codeMenu.getItems().addAll(utf8MenuItem,asciiMenuItem,unicodeMenuItem,gbkMenuItem,gb2312MenuItem);
         menuBar.getMenus().addAll(fileMenu,codeMenu);
+
+
+        listenNewMenuItem(newMenuItem,root,mainTabPane);
         return menuBar;
     }
 }

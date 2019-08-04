@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group name="root">
+    <job>
+        <name>a</name>
+        <command>1</command>
+    </job>
+    <job>
+        <name>b</name>
+        <command>2</command>
+    </job>
+    <group name="child01">
+        <job>
+            <name>c</name>
+            <command>3</command>
+        </job>
+        <job>
+            <name>d</name>
+            <command>4</command>
+        </job>
+        <group name="cchild01">
+            <job>
+                <name>d</name>
+                <command>5</command>
+            </job>
+            <job>
+                <name>e</name>
+                <command>6</command>
+            </job>
+        </group>
+    </group>
+    <group name="child02">
+        <job>
+            <name>c</name>
+            <command>3</command>
+        </job>
+        <job>
+            <name>d</name>
+            <command>4</command>
+        </job>
+        <group name="cchild02">
+            <job>
+                <name>d</name>
+                <command>5</command>
+            </job>
+            <job>
+                <name>e</name>
+                <command>6</command>
+            </job>
+        </group>
+    </group>
+</group>
